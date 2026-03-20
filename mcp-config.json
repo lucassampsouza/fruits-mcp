@@ -1,0 +1,26 @@
+{
+  "_comment_local": "Use this block to run from local source (before publishing to PyPI)",
+  "_comment_remote": "After 'pip publish' or 'uv publish', use just the package name",
+
+  "mcpServers": {
+    "fruits-mcp": {
+      "command": "uvx",
+      "args": ["fruits-mcp"],
+      "env": {
+        "PRODUCT_FRUITS_API_TOKEN": "YOUR_API_TOKEN_HERE"
+      }
+    }
+  },
+
+  "_local_alternative": {
+    "mcpServers": {
+      "fruits-mcp": {
+        "command": "uvx",
+        "args": ["--from", "/mnt/d/dev/Estudos/fruits-mcp", "fruits-mcp"],
+        "env": {
+          "PRODUCT_FRUITS_API_TOKEN": "YOUR_API_TOKEN_HERE"
+        }
+      }
+    }
+  }
+}
