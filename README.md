@@ -2,40 +2,50 @@
 
 MCP server for the [Product Fruits](https://productfruits.com) Knowledge Base API.
 
-## Setup
+## Requirements
 
-Set your API token via environment variable:
+- [uv](https://docs.astral.sh/uv/) installed
 
-```bash
-export PRODUCT_FRUITS_API_TOKEN=your_token_here
+**Windows:**
+```powershell
+winget install astral-sh.uv
 ```
 
-## Usage with uvx (after publishing to PyPI)
-
+**macOS/Linux:**
 ```bash
-uvx fruits-mcp
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-## Usage with uvx (local)
+## Claude Desktop setup (Windows)
 
-```bash
-uvx --from /path/to/fruits-mcp fruits-mcp
-```
-
-## Claude Code / Claude Desktop config
+Edit `%APPDATA%\Claude\claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
     "fruits-mcp": {
       "command": "uvx",
-      "args": ["fruits-mcp"],
+      "args": ["--from", "git+https://github.com/lucassampsouza/fruits-mcp", "fruits-mcp"],
       "env": {
         "PRODUCT_FRUITS_API_TOKEN": "your_token_here"
       }
     }
   }
 }
+```
+
+Restart Claude Desktop after saving.
+
+## Claude Code setup
+
+```bash
+claude mcp add fruits-mcp uvx -- --from git+https://github.com/lucassampsouza/fruits-mcp fruits-mcp
+```
+
+Then set the token:
+```bash
+# Add to your shell profile or set in Claude Code settings
+export PRODUCT_FRUITS_API_TOKEN=your_token_here
 ```
 
 ## Available tools
